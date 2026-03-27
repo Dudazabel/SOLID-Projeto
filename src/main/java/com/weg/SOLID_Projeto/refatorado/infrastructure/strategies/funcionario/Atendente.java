@@ -1,4 +1,11 @@
 package com.weg.SOLID_Projeto.refatorado.infrastructure.strategies.funcionario;
 
-public class Atendente {
+import com.weg.SOLID_Projeto.refatorado.domain.interfaces.funcionario.AdicionalSalarialPorPericulosidade;
+
+public class Atendente implements AdicionalSalarialPorPericulosidade {
+
+    @Override
+    public double calcular(double valor){
+        return valor;
+    }
 }
