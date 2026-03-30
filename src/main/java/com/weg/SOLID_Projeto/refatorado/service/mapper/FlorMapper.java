@@ -1,6 +1,7 @@
 package com.weg.SOLID_Projeto.refatorado.service.mapper;
 
 import com.weg.SOLID_Projeto.refatorado.domain.impl.Flor;
+import com.weg.SOLID_Projeto.refatorado.service.dto.flor.FlorRequisicaoDTO;
 import com.weg.SOLID_Projeto.refatorado.service.dto.flor.FlorRespostaDTO;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +10,7 @@ import java.util.List;
 @Component
 public class FlorMapper {
 
-    public Flor DTOParaEntidade(FlorRespostaDTO flor){
+    public Flor DTOParaEntidade(FlorRequisicaoDTO flor){
         return new Flor(flor.nome(), flor.tipo(), flor.valor());
     }
 

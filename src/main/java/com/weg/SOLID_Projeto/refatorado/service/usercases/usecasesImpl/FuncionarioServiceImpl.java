@@ -31,7 +31,7 @@ public class FuncionarioServiceImpl implements FuncionarioServiceIntrf {
         funcionarioSalvo.setNome(funcionario.nome());
         funcionarioSalvo.setTipo(funcionario.tipo());
         funcionarioSalvo.setSalario(funcionario.salario());
-        return mapper.EntidadeParaDTO(funcionarioSalvo);
+        return mapper.EntidadeParaDTO(repository.save(funcionarioSalvo));
     }
 
     @Override
