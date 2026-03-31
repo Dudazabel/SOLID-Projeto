@@ -1,9 +1,11 @@
 package com.weg.SOLID_Projeto.refatorado.service.usercases.usecasesImpl;
 
 import com.weg.SOLID_Projeto.refatorado.domain.impl.Cliente;
+import com.weg.SOLID_Projeto.refatorado.domain.impl.Compra;
 import com.weg.SOLID_Projeto.refatorado.domain.impl.Flor;
 import com.weg.SOLID_Projeto.refatorado.domain.impl.Servico;
 import com.weg.SOLID_Projeto.refatorado.infrastructure.repository.ClienteRepository;
+import com.weg.SOLID_Projeto.refatorado.infrastructure.repository.CompraRepository;
 import com.weg.SOLID_Projeto.refatorado.infrastructure.repository.FlorRepository;
 import com.weg.SOLID_Projeto.refatorado.infrastructure.repository.ServicoRepository;
 import com.weg.SOLID_Projeto.refatorado.infrastructure.strategies.compra.StrategyManager;
@@ -21,6 +23,7 @@ public class CompraServiceImpl implements CompraServiceIntrf {
     private final FlorRepository florRepository;
     private final ServicoRepository servicoRepository;
     private final StrategyManager strategyManager;
+    private final CompraRepository compraRepository;
 
 
     @Override
@@ -32,6 +35,7 @@ public class CompraServiceImpl implements CompraServiceIntrf {
         Servico servico = servicoRepository.findByNome(compra.nomeServico())
                 .orElseThrow(() -> new RuntimeException("Serviço não encontrado!"));
 
+
         double valorBaseFlor = flor.getValor() * compra.quantidadeFlores();
         double totalFlor = strategyManager.getAdcRaridade(flor.getTipo()).calcular(valorBaseFlor);
 
@@ -41,6 +45,15 @@ public class CompraServiceImpl implements CompraServiceIntrf {
 
         double total = strategyManager.getDesconto(cliente.getTipo()).calcular(subtotal);
 
-        return new CompraRespostaDTO(compra.nomeCliente(), compra.nomeFlor(), compra.quantidadeFlores(), compra.nomeServico(), total);
+        Compra novaCompra = new Compra();
+        novaCompra.setNomeCliente(compra.nomeCliente());
+        novaCompra.setNomeFlor(compra.nomeFlor());
+        novaCompra.setQuantidadeFlores(compra.quantidadeFlores());
+        novaCompra.setNomeServico(compra.nomeServico());
+        novaCompra.setValorTotal(total);
+
+        Compra compraSalva = compraRepository.save(novaCompra);
+
+        return new CompraRespostaDTO(compraSalva.getId(), compra.nomeCliente(), compra.nomeFlor(), compra.quantidadeFlores(), compra.nomeServico(), total);
     }
 }
