@@ -5,7 +5,6 @@ import com.weg.SOLID_Projeto.refatorado.service.dto.cliente.ClienteRespostaDTO;
 import com.weg.SOLID_Projeto.refatorado.service.usercases.usecasesImpl.ClienteServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

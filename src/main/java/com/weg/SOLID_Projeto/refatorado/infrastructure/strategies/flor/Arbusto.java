@@ -10,4 +10,9 @@ public class Arbusto implements AdicionalRaridade {
     public double calcular(double valor){
         return valor * 1.10;
     }
+
+    @Override
+    public String getTipo(){
+        return "ARBUSTO";
+    }
 }

@@ -10,4 +10,9 @@ public class Espinhosa implements AdicionalRaridade {
     public double calcular(double valor){
         return valor * 1.20;
     }
+
+    @Override
+    public String getTipo(){
+        return "ESPINHOSA";
+    }
 }

@@ -10,4 +10,9 @@ public class ClienteVIP implements DescontoTipoCliente {
     public double calcular(double valor){
         return valor * 0.90;
     }
+
+    @Override
+    public String getTipo(){
+        return "VIP";
+    }
 }

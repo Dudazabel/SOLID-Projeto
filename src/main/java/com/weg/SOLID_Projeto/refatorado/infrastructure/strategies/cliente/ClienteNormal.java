@@ -10,4 +10,9 @@ public class ClienteNormal implements DescontoTipoCliente {
     public double calcular(double valor){
         return valor;
     }
+
+    @Override
+    public String getTipo(){
+        return "NORMAL";
+    }
 }

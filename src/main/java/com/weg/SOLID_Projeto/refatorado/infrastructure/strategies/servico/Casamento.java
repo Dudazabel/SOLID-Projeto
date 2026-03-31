@@ -10,4 +10,9 @@ public class Casamento implements AdicionalPorServico {
     public double calcular(double valor){
         return valor + (valor * 0.30);
     }
+
+    @Override
+    public String getTipo(){
+        return "CASAMENTO";
+    }
 }

@@ -10,4 +10,9 @@ public class Buque implements AdicionalPorServico {
     public double calcular(double valor){
         return valor + ( valor * 0.20 );
     }
+
+    @Override
+    public String getTipo(){
+        return "BUQUE";
+    }
 }

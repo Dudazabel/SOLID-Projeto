@@ -10,4 +10,9 @@ public class ClientePremium implements DescontoTipoCliente {
     public double calcular(double valor){
         return valor * 0.75;
     }
+
+    @Override
+    public String getTipo(){
+        return "PREMIUM";
+    }
 }

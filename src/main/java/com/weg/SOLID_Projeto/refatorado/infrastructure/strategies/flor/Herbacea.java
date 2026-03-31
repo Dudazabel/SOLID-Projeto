@@ -10,4 +10,9 @@ public class Herbacea implements AdicionalRaridade {
     public double calcular(double valor){
         return valor;
     }
+
+    @Override
+    public String getTipo(){
+        return "HERBACEA";
+    }
 }
