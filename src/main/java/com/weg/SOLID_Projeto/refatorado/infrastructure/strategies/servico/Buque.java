@@ -1,7 +1,9 @@
 package com.weg.SOLID_Projeto.refatorado.infrastructure.strategies.servico;
 
 import com.weg.SOLID_Projeto.refatorado.domain.interfaces.servico.AdicionalPorServico;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Buque implements AdicionalPorServico {
 
     @Override
